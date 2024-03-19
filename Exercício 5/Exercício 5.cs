@@ -1,27 +1,23 @@
 ﻿using System.Diagnostics;
-
 namespace Exercício_3
 {
-
     internal class Program
     {
         static void Main(string[] args)
         {
-
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Exercício 05\nCalculando o volume de uma esfera\n");
-
-                Console.WriteLine("Digite o raio da esfera:");
-                string radio = Console.ReadLine();
-                double raio = Convert.ToDouble(radio);
-
-                double volume = Math.Round(Math.PI, 4) * Math.Pow(raio, 3) * 4 / 3;
-                Console.WriteLine("Show! O volume é: " + volume + "\n\nDeseja continuar? [S/N]");
-                string continua = Console.ReadLine();
-                if (continua == "n" || continua == "N") break;
+                Console.WriteLine("Exercício 05\nCalculando o volume de uma esfera\n\nDigite o raio da esfera:");
+                double raio = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Show! O volume é: " + (Math.Round(Math.PI, 4) * Math.Pow(raio, 3) * 4 / 3) + "\n\nDeseja continuar? [S/N]");
+                if (DeveContinuar()) break;
             }
+        }
+        static bool DeveContinuar()
+        {
+            string continua = Console.ReadLine();
+            return (continua == "n" || continua == "N");
         }
     }
 }
