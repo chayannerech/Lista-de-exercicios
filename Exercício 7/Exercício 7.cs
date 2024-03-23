@@ -1,35 +1,32 @@
 ﻿using System.Diagnostics;
-
 namespace Exercício_7
 {
-
     internal class Program
     {
         static void Main(string[] args)
         {
-
             while (true)
             {
                 Console.Clear();
                 Console.WriteLine("Exercício 07\nCalculando salário total de um vendedor\n");
 
-                Console.WriteLine("Digite o salário base: [R$]");
-                string salariobase = Console.ReadLine();
-                double salario = Convert.ToDouble(salariobase);
+                double salario = GettingValue("Digite o salário base: [R$]");
+                double vendas = GettingValue("Informe o total de vendas realizadas: [R$]");
+                double comissao = GettingValue("Qual a comissão sobre as vendas? [%]");
 
-                Console.WriteLine("Informe o total de vendas realizadas: [R$]");
-                string numvendas = Console.ReadLine();
-                double vendas = Convert.ToDouble(numvendas);
-
-                Console.WriteLine("Qual a comissão sobre as vendas? [%]");
-                string comissao = Console.ReadLine();
-                double comis = Convert.ToDouble(comissao);
-
-                double total = salario + (vendas * comis / 100); 
-                Console.WriteLine("Show! O salário total do vendedor é de: " + total + " R$\n\nDeseja continuar? [S/N]");
-                string continua = Console.ReadLine();
-                if (continua == "n" || continua == "N") break;
+                Console.WriteLine("Show! O salário total do vendedor é de: " + (salario + (vendas * comissao / 100)) + " R$\n\nDeseja continuar? [S/N]");
+                if (DeveContinuar()) break;
             }
+        }
+        static double GettingValue(string text)
+        {
+            Console.WriteLine(text);
+            return Convert.ToDouble(Console.ReadLine());
+        }
+        static bool DeveContinuar()
+        {
+            string continua = Console.ReadLine();
+            return (continua == "n" || continua == "N");
         }
     }
 }
